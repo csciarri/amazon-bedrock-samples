@@ -204,7 +204,8 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
     > 
     > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step, then select _agent/api-schema/send_reminder.json_.
     > 
-  e. Select **Save** at the top of the page.
+    e. Select **Save** at the top of the page.
+  
 3. Add Knowledge Bases to agent:
   a. Under Knowledge bases, Select **Add**
     > i. Under **Select knowledge base**, select the knowledge base you created in the preceding deployment step (e.g., claims-knowledge-base).
@@ -212,7 +213,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
     > ii. Under **Knowledge base instructions for Agent**, enter the following then select **Add**:
 
     ```
-Use to retrieve claim amounts and repair estimates for a specific claim ID, or answer general insurance questions about things like coverage, premium, policy, rate, deductible, accident, and documents
+   Use to retrieve claim amounts and repair estimates for a specific claim ID, or answer general insurance questions about things like coverage, premium, policy, rate, deductible, accident, and documents
     ```
    
     <p align="center">
