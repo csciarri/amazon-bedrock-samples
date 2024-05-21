@@ -150,24 +150,30 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
 
 ### Deploy Agent
 
-1. Navigate to the [Amazon Bedrock > Agents > Create Agent console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/agents/create):
+1. Navigate to the [Amazon Bedrock > Agents console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/agents/):
 
-    a. Under **Provide Agent details**, enter an agent name and optional description, leaving all other default settings.
+2. Select **Create Agent**
 
-    b. Under **Select model**, select _Anthropic Claude 3 Sonnet_ and specify the following instructions for the agent, then select **Next**:
+    a. Enter an agent name and optional description. Select **Create**.
+
+    b. In the Agent details, under **Select model**, select _Anthropic Claude 3 Sonnet_ and specify the following instructions for the agent:
     ```
     You are an insurance agent that has access to domain-specific insurance knowledge. You can create new insurance claims, send pending document reminders to policy holders with open claims, and gather claim evidence. You can also retrieve claim amount and repair estimate information for a specific claim ID or answer general insurance questions about things like coverage, premium, policy, rate, deductible, accident, documents, resolution, and condition. You can answer internal questions about things like which steps an agent should follow and the company's internal processes. You can respond to questions about multiple claim IDs within a single conversation.
     ```
 
-    c. Under **Add Action groups**, add the following three action groups then select **Next**:
+    c. Select **Save** at the top of the page.
+
+    d. In **Action groups**, select **add**. We will create the following three action groups. Each action group should be 
 
     **Action group 1 - create-claim:**
-   
-    > i. **Description:** Use this action group to create an insurance claim.
+    > i. **Name** create-claim
+    > ii. **Description:** Use this action group to create an insurance claim.
+    >
+    > iii. Under Action group type, select **Define with API schemas**
     > 
-    > ii. Under **Select Lambda function**, choose _<YOUR-STACK-NAME>-CreateClaimFunction_.
+    > iiii. Under Action group invocation select **Select an existing Lambda function**, choose _<YOUR-STACK-NAME>-CreateClaimFunction_.
     > 
-    > iii. Under **Select API schema**, choose _Browse S3_, pick the bucket created during the preceding deployment step (e.g., \<YOUR-STACK-NAME>-customer-resources), then select _agent/api-schema/create_claim.json_.
+    > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step (e.g., \<YOUR-STACK-NAME>-customer-resources), then select _agent/api-schema/create_claim.json_.
 
     <p align="center">
       <img src="../design/ag-configuration.png" width="95%" height="95%"><br>
@@ -176,21 +182,27 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
 
     **Action group 2 - gather-evidence:**
 
-    > i. **Description:** Use this action group to send the user a URL for evidence upload on open status claims with pending documents. Return the documentUploadUrl to the user.
+    > i. **Name** gather-evidence
+    > ii. **Description:** Use this action group to create an insurance claim.
+    >
+    > iii. Under Action group type, select **Define with API schemas**
     > 
-    > ii. Under **Select Lambda function**, choose _<YOUR-STACK-NAME>-GatherEvidenceFunction_.
+    > iiii. Under Action group invocation select **Select an existing Lambda function**, choose _<YOUR-STACK-NAME>-GatherEvidenceFunction_.
     > 
-    > iii. Under **Select API schema**, choose _Browse S3_, pick the bucket created during the preceding deployment step, then select _agent/api-schema/gather_evidence.json_.
+    > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step, then select _agent/api-schema/gather_evidence.json_.
 
     **Action group 3 - send-reminder:**
 
-    > i. **Description:** Use this action group to check claim status, identify missing or pending documents, and send reminders to policy holders.
+    > i. **Name** send-reminder
+    > ii. **Description:** Use this action group to create an insurance claim.
     >
-    > ii. Under **Select Lambda function**, choose _<YOUR-STACK-NAME>-SendReminderFunction_.
+    > iii. Under Action group type, select **Define with API schemas**
     > 
-    > iii. Under **Select API schema**, choose _Browse S3_, pick the bucket created during the preceding deployment step, then select _agent/api-schema/send_reminder.json_.
+    > iiii. Under Action group invocation select **Select an existing Lambda function**, choose _<YOUR-STACK-NAME>-SendReminderFunction_.
+    > 
+    > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step, then select _agent/api-schema/send_reminder.json_.
 
-    d. Under **Add Knowledge base**:
+    e. Under **Add Knowledge base**:
 
     > i. Under **Select knowledge base**, select the knowledge base you created in the preceding deployment step (e.g., claims-knowledge-base).
     >
@@ -205,7 +217,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
       <span style="display: block; text-align: center;"><em>Figure 7: Agent Knowledge Base Configuration</em></span>
     </p>
 
-    e. Under **Review and create**, confirm your configuration settings then select **Create Agent**: 
+    f. Under **Review and create**, confirm your configuration settings then select **Create Agent**: 
 
 <p align="center">
   <img src="../design/agent-configuration.png" width="85%" height="85%"><br>
