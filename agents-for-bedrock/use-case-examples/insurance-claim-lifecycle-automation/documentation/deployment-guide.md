@@ -15,19 +15,25 @@ To deploy this solution, your IAM user/role or service role must have permission
 You must also have [AWS Command Line Interface](https://aws.amazon.com/cli/) (CLI) installed. For instructions on installing AWS CLI, please see [Installing, updating, and uninstalling the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
 
 ### Enable Anthropic Claude3 Sonnet
-1. Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
-  a. Select **Manage model access**
-  b. On the Manage model access page, Select the checkbox for **Claude 3 Sonnet**
-  c. Select **Save Changes** at the bottom of the page.
+Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
+- Select **Manage model access**
+
+- On the Manage model access page, Select the checkbox for **Claude 3 Sonnet**
+  
+- Select **Save Changes** at the bottom of the page.
+  
 
 ### Create Cloud9 Environment
-1. Navigate to the [Cloud9 > Create environment console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/):
-   a. Under **Details**, enter a name for the Cloud9 environment
-   b. Leave all the other options at their default and select **Create** to create the environment
-   c. Under the **Environments** section there should be an entry for the Cloud9 environment that was just created. Select **Open** for it. It may take a minute to open if the environment is still creating.
+Navigate to the [Cloud9 > Create environment console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/):
+- Under **Details**, enter a name for the Cloud9 environment
+  
+- Leave all the other options at their default and select **Create** to create the environment
+  
+- Under the **Environments** section there should be an entry for the Cloud9 environment that was just created. Select **Open** for it. It may take a minute to open if the environment is still creating.
+   
    
 ### Clone [_amazon-bedrock-samples_](https://github.com/csciarri/amazon-bedrock-samples) Repository
-1. Within the Cloud9 IDE that you have just opened, create a local copy of the **amazon-bedrock-samples** repository using _git clone_:
+Within the Cloud9 IDE that you have just opened, create a local copy of the **amazon-bedrock-samples** repository using _git clone_:
 
 ```sh
 git clone https://github.com/csciarri/amazon-bedrock-samples.git
