@@ -221,7 +221,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
       <span style="display: block; text-align: center;"><em>Figure 7: Agent Knowledge Base Configuration</em></span>
     </p>
 
-    f. Under **Review and create**, confirm your configuration settings then select **Create Agent**: 
+4. On the main Agent builder screen, confirm your agent configuration looks similar to below with the instructions for the agent filled in, 3 Action Groups created and 1 Knowledge Base configured similar to the screen shot below. Select **Save and exit**.
 
 <p align="center">
   <img src="../design/agent-configuration.png" width="85%" height="85%"><br>
