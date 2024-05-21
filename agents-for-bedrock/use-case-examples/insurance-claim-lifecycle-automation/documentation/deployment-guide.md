@@ -7,13 +7,6 @@
 - [Create Agent](#create-agent)
 - [Testing and Validation](#testing-and-validation)
 
-## Pre-Implementation
-By default, [AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html) uses a temporary session that it generates from your user credentials for stack operations. If you specify a service role, CloudFormation will instead use that role's credentials.
-
-To deploy this solution, your IAM user/role or service role must have permissions to deploy the resources specified in the CloudFormation template. For more details on [AWS Identity and Access Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction.html) (IAM) with CloudFormation, please refer to the [AWS CloudFormation User Guide](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html).
-
-You must also have [AWS Command Line Interface](https://aws.amazon.com/cli/) (CLI) installed. For instructions on installing AWS CLI, please see [Installing, updating, and uninstalling the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
-
 ### Enable Anthropic Claude3 Sonnet
 Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
 - Select **Manage model access**
@@ -40,16 +33,7 @@ git clone https://github.com/csciarri/amazon-bedrock-samples.git
 ```
 
 ### Deploy CloudFormation Stack to Emulate Existing Customer Resources 
-To emulate the existing customer resources utilized by the agent, this solution uses the [create-customer-resources.sh](../shell/create-customer-resources.sh) shell script to automate provisioning of the parameterized CloudFormation template, [bedrock-customer-resources.yml](../cfn/bedrock-customer-resources.yml), to deploy the following resources:
-
-> - [Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html) table populated with synthetic [claims data](../agent/lambda/data-loader/claims.json).
-> - Three [AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) functions that represent customer business logic for creating claims, sending pending document reminders for open status claims, and gathering evidence on new and existing claims.
-> - Two Lambda layers for Amazon Bedrock Boto3 and [cfnresponse](https://pypi.org/project/cfnresponse/) libraries.
-> - Amazon S3 bucket containing API documentation in OpenAPI schema format for the preceding Lambda functions and the repair estimates, claim amounts, company FAQs, and required claim document descriptions to be used as our [knowledge base data source assets](../agent/knowledge-base-assets).
-> - [Amazon Simple Notification Service](https://docs.aws.amazon.com/sns/latest/dg/welcome.html) (SNS) topic to which policy holders' emails are subscribed for email alerting of claim status and pending actions.
-> - AWS IAM permissions for the preceding resources.
-
-CloudFormation prepopulates stack parameters with the default values provided in the template. To provide alternative input values, you can specify parameters as environment variables that are referenced in the `ParameterKey=<ParameterKey>,ParameterValue=<Value>` pairs in the _create-customer-resources.sh_ shell script's `aws cloudformation create-stack` command. 
+To emulate the existing customer resources utilized by the agent, this solution uses the [create-customer-resources.sh](../shell/create-customer-resources.sh) shell script to automate provisioning of the parameterized CloudFormation template, [bedrock-customer-resources.yml](../cfn/bedrock-customer-resources.yml).
 
 1. Before you run the shell script, navigate to the directory where you cloned the _amazon-bedrock-samples_ repository and modify the shell script permissions to executable:
 
