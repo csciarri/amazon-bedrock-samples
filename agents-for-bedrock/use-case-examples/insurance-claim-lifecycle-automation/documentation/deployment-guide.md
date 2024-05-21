@@ -203,6 +203,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
     > iiii. Under Action group invocation select **Select an existing Lambda function**, choose _<YOUR-STACK-NAME>-SendReminderFunction_.
     > 
     > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step, then select _agent/api-schema/send_reminder.json_.
+    > 
   e. Select **Save** at the top of the page.
 
 3. Under **Add Knowledge base**:
