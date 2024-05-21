@@ -174,6 +174,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
     > iiii. Under Action group invocation select **Select an existing Lambda function**, choose _<YOUR-STACK-NAME>-CreateClaimFunction_.
     > 
     > iiiii. Under Action Group Schema, select **Select an existing API schema**, select the _Browse S3_ button, pick the bucket created during the preceding deployment step (e.g., \<YOUR-STACK-NAME>-customer-resources), then select _agent/api-schema/create_claim.json_.
+    > iiiiiii. Select **Create**
 
     <p align="center">
       <img src="../design/ag-configuration.png" width="95%" height="95%"><br>
