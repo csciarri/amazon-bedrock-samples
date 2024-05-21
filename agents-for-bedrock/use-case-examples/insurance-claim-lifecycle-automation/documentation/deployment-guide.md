@@ -14,26 +14,23 @@ To deploy this solution, your IAM user/role or service role must have permission
 
 You must also have [AWS Command Line Interface](https://aws.amazon.com/cli/) (CLI) installed. For instructions on installing AWS CLI, please see [Installing, updating, and uninstalling the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html).
 
-### Clone [_amazon-bedrock-samples_](https://github.com/aws-samples/amazon-bedrock-samples) Repository
-1. Create a local copy of the **amazon-bedrock-samples** repository using _git clone_:
+### Enable Anthropic Claude3 Sonnet
+1. Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
+  a. Select **Manage model access**
+  b. On the Manage model access page, Select the checkbox for **Claude 3 Sonnet**
+  c. Select **Save Changes** at the bottom of the page.
+
+### Create Cloud9 Environment
+1. Navigate to the [Cloud9 > Create environment console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/):
+   a. Under **Details**, enter a name for the Cloud9 environment
+   b. Leave all the other options at their default and select **Create** to create the environment
+   c. Under the **Environments** section there should be an entry for the Cloud9 environment that was just created. Select **Open** for it. It may take a minute to open if the environment is still creating.
+   
+### Clone [_amazon-bedrock-samples_](https://github.com/csciarri/amazon-bedrock-samples) Repository
+1. Within the Cloud9 IDE that you have just opened, create a local copy of the **amazon-bedrock-samples** repository using _git clone_:
 
 ```sh
-git clone https://github.com/aws-samples/amazon-bedrock-samples.git
-```
-
-#### Optional - Run Security Scan on the AWS CloudFormation Templates
-To run a security scan on the AWS CloudFormation templates using [`cfn_nag`](https://github.com/stelligent/cfn_nag) (recommended), you have to install `cfn_nag`:
-
-```sh
-brew install ruby brew-gem
-brew gem install cfn-nag
-```
-
-To initiate the security scan, run the following command:
-```sh
-# git clone https://github.com/aws-samples/amazon-bedrock-samples
-# cd amazon-bedrock-samples
-cfn_nag_scan --input-path agents/insurance-claim-lifecycle-automation/cfn/bedrock-customer-resources.yml
+git clone https://github.com/csciarri/amazon-bedrock-samples.git
 ```
 
 ### Deploy CloudFormation Stack to Emulate Existing Customer Resources 
@@ -69,56 +66,6 @@ export AWS_REGION=<YOUR-STACK-REGION> # Stack deployment region
 
 ```sh
 source ./create-customer-resources.sh
-```
-
-The preceding `source ./create-customer-resources.sh` shell command runs the following AWS CLI commands to deploy the emulated customer resources stack:
-
-```sh
-export ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-export ARTIFACT_BUCKET_NAME=$STACK_NAME-customer-resources
-export DATA_LOADER_KEY="agent/lambda/data-loader/loader_deployment_package.zip"
-export CREATE_CLAIM_KEY="agent/lambda/action-groups/create_claim.zip"
-export GATHER_EVIDENCE_KEY="agent/lambda/action-groups/gather_evidence.zip"
-export SEND_REMINDER_KEY="agent/lambda/action-groups/send_reminder.zip"
-
-aws s3 mb s3://${ARTIFACT_BUCKET_NAME} --region ${AWS_REGION}
-aws s3 cp ../agent/ s3://${ARTIFACT_BUCKET_NAME}/agent/ --region ${AWS_REGION} --recursive --exclude ".DS_Store"
-
-export BEDROCK_AGENTS_LAYER_ARN=$(aws lambda publish-layer-version \
-    --layer-name bedrock-agents \
-    --description "Agents for Bedrock Layer" \
-    --license-info "MIT" \
-    --content S3Bucket=${ARTIFACT_BUCKET_NAME},S3Key=agent/lambda/lambda-layer/bedrock-agents-layer.zip \
-    --compatible-runtimes python3.11 \
-    --region ${AWS_REGION} \
-    --query LayerVersionArn --output text)
-
-export CFNRESPONSE_LAYER_ARN=$(aws lambda publish-layer-version \
-    --layer-name cfnresponse \
-    --description "cfnresponse Layer" \
-    --license-info "MIT" \
-    --content S3Bucket=${ARTIFACT_BUCKET_NAME},S3Key=agent/lambda/lambda-layer/cfnresponse-layer.zip \
-    --compatible-runtimes python3.11 \
-    --region ${AWS_REGION} \
-    --query LayerVersionArn --output text)
-
-aws cloudformation create-stack \
---stack-name ${STACK_NAME} \
---template-body file://../cfn/bedrock-customer-resources.yml \
---parameters \
-ParameterKey=ArtifactBucket,ParameterValue=${ARTIFACT_BUCKET_NAME} \
-ParameterKey=DataLoaderKey,ParameterValue=${DATA_LOADER_KEY} \
-ParameterKey=CreateClaimKey,ParameterValue=${CREATE_CLAIM_KEY} \
-ParameterKey=GatherEvidenceKey,ParameterValue=${GATHER_EVIDENCE_KEY} \
-ParameterKey=SendReminderKey,ParameterValue=${SEND_REMINDER_KEY} \
-ParameterKey=BedrockAgentsLayerArn,ParameterValue=${BEDROCK_AGENTS_LAYER_ARN} \
-ParameterKey=CfnresponseLayerArn,ParameterValue=${CFNRESPONSE_LAYER_ARN} \
-ParameterKey=SNSEmail,ParameterValue=${SNS_EMAIL} \
-ParameterKey=EvidenceUploadUrl,ParameterValue=${EVIDENCE_UPLOAD_URL} \
---capabilities CAPABILITY_NAMED_IAM \
---region ${AWS_REGION}
-
-aws cloudformation describe-stacks --stack-name $STACK_NAME --region ${AWS_REGION} --query "Stacks[0].StackStatus"
 ```
 
 ## Create Knowledge Base
@@ -199,7 +146,7 @@ Agents operate through a build-time execution process, comprising several key co
 - **(Optional) Action Groups:** Users define actions for the agent, leveraging an OpenAPI schema to define APIs for task execution and Lambda functions to process API inputs and outputs.
 - **(Optional) Knowledge Bases:** Users can associate agents with knowledge bases, granting access to additional context for response generation and orchestration steps.
 
-The agent in this sample solution will use an Anthropic Claude V2.1 foundation model, a set of instructions, three action groups, and one knowledge base.
+The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundation model, a set of instructions, three action groups, and one knowledge base.
 
 ### Deploy Agent
 
@@ -207,7 +154,7 @@ The agent in this sample solution will use an Anthropic Claude V2.1 foundation m
 
     a. Under **Provide Agent details**, enter an agent name and optional description, leaving all other default settings.
 
-    b. Under **Select model**, select _Anthropic Claude V2.1_ and specify the following instructions for the agent, then select **Next**:
+    b. Under **Select model**, select _Anthropic Claude 3 Sonnet_ and specify the following instructions for the agent, then select **Next**:
     ```
     You are an insurance agent that has access to domain-specific insurance knowledge. You can create new insurance claims, send pending document reminders to policy holders with open claims, and gather claim evidence. You can also retrieve claim amount and repair estimate information for a specific claim ID or answer general insurance questions about things like coverage, premium, policy, rate, deductible, accident, documents, resolution, and condition. You can answer internal questions about things like which steps an agent should follow and the company's internal processes. You can respond to questions about multiple claim IDs within a single conversation.
     ```
