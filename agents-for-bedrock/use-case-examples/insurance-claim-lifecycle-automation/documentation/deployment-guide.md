@@ -48,8 +48,8 @@ CloudFormation prepopulates stack parameters with the default values provided in
 1. Before you run the shell script, navigate to the directory where you cloned the _amazon-bedrock-samples_ repository and modify the shell script permissions to executable:
 
 ```sh
-# If not already cloned, clone the remote repository (https://github.com/aws-samples/amazon-bedrock-samples) and change working directory to shell folder:
-cd amazon-bedrock-samples/agents/insurance-claim-lifecycle-automation/shell/
+# If not already cloned, clone the remote repository (https://github.com/csciarri/amazon-bedrock-samples) and change working directory to shell folder:
+cd amazon-bedrock-samples/agents-for-bedrock/use-case-examples/insurance-claim-lifecycle-automation/shell/
 chmod u+x create-customer-resources.sh
 ```
 
