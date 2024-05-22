@@ -6,7 +6,7 @@
 - [Create Knowledge Base](#create-knowledge-base)
 - [Create Agent](#create-agent)
 - [Testing and Validation](#testing-and-validation)
-
+## Pre-Implementation
 ### Enable Anthropic Claude3 Sonnet
 Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
 - Select **Manage model access**
