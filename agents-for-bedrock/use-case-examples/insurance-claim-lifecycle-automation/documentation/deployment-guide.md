@@ -105,10 +105,10 @@ Knowledge base functionality is delineated through two key processes:
   <span style="display: block; text-align: center;"><em>Figure 2: Knowledge Base Configuration Settings</em></span>
 </p>
 
-2. Once your knowledge base is created, a green "created successfully" banner will display with the option to sync your data source. Select **Sync** to initiate the data source sync:
+2. Once your knowledge base is created, a green "created successfully" banner will display notifying you to sync your data source. Select **Sync** on the data source to initiate the data source sync:
 
 <p align="center">
-  <img src="../design/kb-creation-banner.png" width="90%" height="90%"><br>
+  <img src="../design/kb-sync.png" width="90%" height="90%"><br>
   <span style="display: block; text-align: center;"><em>Figure 3: Knowledge Base Data Source Sync</em></span>
 </p>
 
