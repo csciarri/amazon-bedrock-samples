@@ -85,18 +85,18 @@ Knowledge base functionality is delineated through two key processes:
 
 1. Navigate to the [Amazon Bedrock > Knowledge base > Create knowledge base console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/knowledge-bases/create-knowledge-base):
 
-    a. Under **Provide knowledge base details**, enter a name and the following optional description, leaving all other default settings:
+    a. Under **Provide knowledge base details**, enter a name and the following optional description, leaving all other default settings. Then select **Next**.
     ```
     Use to retrieve claim amount and repair estimate information for claim ID, or answer general insurance questions about things like coverage, premium, policy, rate, deductible, accident, and documents
     ```
-    b. Under **Set up data source**, enter a name then choose _Browse S3_ and select the 'knowledge-base-assets' folder of the data source S3 bucket you deployed in the preceding deployment step (e.g., \<YOUR-STACK-NAME>-customer-resources/agent/knowledge-base-assets/):
+    b. Under **Configure data source**, enter a name for the data source, then choose _Browse S3_ and select the 'knowledge-base-assets' folder of the data source S3 bucket you deployed in the preceding deployment step (e.g., \<YOUR-STACK-NAME>-customer-resources/agent/knowledge-base-assets/). Then select **Next**
 
     <p align="center">
       <img src="../design/kb-ds-s3-configuration.png"><br>
       <span style="display: block; text-align: center;"><em>Figure 1: Knowledge Base Data Source Configuration</em></span>
     </p>
 
-    c. Under **Select embeddings model and configure vector store**, select _Titan Embeddings G1 - Text_ and leave the other default settings. An [OpenSearch Serverless collection](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vector-search.html) will be created for you. This vector store is where the knowledge base pre-processing embeddings are stored and later used for semantic similarity search between queries and data source text.
+    c. Under **Select embeddings model and configure vector store**, select _Titan Embeddings G1 - Text_. Under Vector database, leave the 'Quick create a new vectore store' selected and leave the other default settings as is. An [OpenSearch Serverless collection](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-vector-search.html) will be created for you. This vector store is where the knowledge base pre-processing embeddings are stored and later used for semantic similarity search between queries and data source text. Select **Next**
 
     d. Under **Review and create**, confirm your configuration settings then select **Create knowledge base**:
 
