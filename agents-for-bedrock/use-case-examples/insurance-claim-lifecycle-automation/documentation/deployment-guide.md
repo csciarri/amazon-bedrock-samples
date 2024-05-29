@@ -8,7 +8,7 @@
 - [Testing and Validation](#testing-and-validation)
 ## Pre-Implementation
 ### Enable Anthropic Claude3 Sonnet
-Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
+Navigate to the [Amazon Bedrock > Model access console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess):
 - Select **Modify model access**
 
 - On the edit model access page, Select the checkbox for **Claude 3 Sonnet**
@@ -17,7 +17,7 @@ Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.consol
   
 
 ### Create Cloud9 Environment
-Navigate to the [Cloud9 > Create environment console](https://us-east-1.console.aws.amazon.com/cloud9control/home?region=us-east-1#/):
+Navigate to the [Cloud9 > Create environment console](https://us-west-2.console.aws.amazon.com/cloud9control/home?region=us-west-2#/):
 - Under **Details**, enter a name for the Cloud9 environment
   
 - Leave all the other options at their default and select **Create** to create the environment
@@ -83,7 +83,7 @@ Knowledge base functionality is delineated through two key processes:
 
 ### Deploy Knowledge Base
 
-1. Navigate to the [Amazon Bedrock > Knowledge base > Create knowledge base console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/knowledge-bases/create-knowledge-base):
+1. Navigate to the [Amazon Bedrock > Knowledge base > Create knowledge base console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/knowledge-bases/create-knowledge-base):
 
     a. Under **Provide knowledge base details**, enter a name and the following optional description, leaving all other default settings. Then select **Next**.
     ```
@@ -112,7 +112,7 @@ Knowledge base functionality is delineated through two key processes:
   <span style="display: block; text-align: center;"><em>Figure 3: Knowledge Base Data Source Sync</em></span>
 </p>
 
-3. Navigate to the [Knowledge Bases for Amazon Bedrock console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/knowledge-bases), select the knowledge base you just created, then note the **Knowledge base ID** under Knowledge base overview:
+3. Navigate to the [Knowledge Bases for Amazon Bedrock console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/knowledge-bases), select the knowledge base you just created, then note the **Knowledge base ID** under Knowledge base overview:
 
 <p align="center">
   <img src="../design/kb-overview.png" width="95%" height="95%"><br>
@@ -140,7 +140,7 @@ The agent in this sample solution will use an Anthropic Claude 3 Sonnet foundati
 
 ### Deploy Agent
 
-1. Navigate to the [Amazon Bedrock > Agents console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/agents/):
+1. Navigate to the [Amazon Bedrock > Agents console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/agents/):
 
 2. Select **Create Agent**
 
