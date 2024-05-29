@@ -7,7 +7,7 @@
 - [Create Agent](#create-agent)
 - [Testing and Validation](#testing-and-validation)
 ## Pre-Implementation
-### Enable Anthropic Claude3 Sonnet
+### Enable Anthropic Claude3 Sonnet and Amazon Titan models
 Navigate to the [Amazon Bedrock > Model access console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess):
 - Select **Modify model access**
 
