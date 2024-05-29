@@ -9,11 +9,11 @@
 ## Pre-Implementation
 ### Enable Anthropic Claude3 Sonnet
 Navigate to the [Amazon Bedrock > Model access console](https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/modelaccess):
-- Select **Manage model access**
+- Select **Modify model access**
 
-- On the Manage model access page, Select the checkbox for **Claude 3 Sonnet**
+- On the edit model access page, Select the checkbox for **Claude 3 Sonnet**
   
-- Select **Save Changes** at the bottom of the page.
+- Select **Next** at the bottom of the page and then **Submit** on the Review and submit page.
   
 
 ### Create Cloud9 Environment
