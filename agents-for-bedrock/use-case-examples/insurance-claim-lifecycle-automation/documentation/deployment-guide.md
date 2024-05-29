@@ -11,7 +11,7 @@
 Navigate to the [Amazon Bedrock > Model access console](https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess):
 - Select **Modify model access**
 
-- On the edit model access page, Select the checkbox for **Claude 3 Sonnet**
+- On the edit model access page, Select the checkbox for **Claude 3 Sonnet** and **Titan Embeddings G1 - Text**
   
 - Select **Next** at the bottom of the page and then **Submit** on the Review and submit page.
   
