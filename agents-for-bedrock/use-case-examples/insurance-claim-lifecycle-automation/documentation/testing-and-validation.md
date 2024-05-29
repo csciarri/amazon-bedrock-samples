@@ -177,12 +177,12 @@ export AWS_REGION=<YOUR-AWS-REGION> # Region into which you deployed the stack
 
 ```
 
-4.	Run your Streamlit application and begin testing in your local web browser:
+4.	Run your Streamlit application and begin testing in your local web browser. 
 
 ```sh 
 streamlit run agent_streamlit.py --server.port 8080
 ```
-
+Select **Previuew running application** to open the application in your browser.
 <p align="center">
   <img src="../design/streamlit-app.png" width="85%" height="85%"><br>
   <span style="display: block; text-align: center;"><em>Figure 21: Streamlit Agent Application</em></span>
