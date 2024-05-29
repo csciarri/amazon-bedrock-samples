@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo ln -s /usr/bin/python3 /usr/bin/python
 # Name for the virtual environment
 VENV_NAME="agent-env"
 
