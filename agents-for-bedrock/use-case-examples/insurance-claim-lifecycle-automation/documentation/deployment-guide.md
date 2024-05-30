@@ -49,7 +49,7 @@ chmod u+x create-customer-resources.sh
 export STACK_NAME=<YOUR-STACK-NAME> # Stack name must be lower case for S3 bucket naming convention
 export SNS_EMAIL=<YOUR-POLICY-HOLDER-EMAIL> # Email used for SNS notifications
 export EVIDENCE_UPLOAD_URL=<YOUR-EVIDENCE-UPLOAD-URL> # URL provided by the agent to the policy holder for evidence upload
-export AWS_REGION=<YOUR-STACK-REGION> # Stack deployment region
+export AWS_REGION=us-west-2 # Stack deployment region
 ```
 
 3. Run the _create-customer-resources.sh_ shell script to deploy the emulated customers resources defined in the _bedrock-customer-resources.yml_ CloudFormation template. These are the resources on which the agent and knowledge base will be built:
